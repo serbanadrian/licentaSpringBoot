@@ -1,6 +1,6 @@
 package com.example.licenta.Controller;
 
-import com.example.Licenta.Service.PDFGeneratorService;
+import com.example.licenta.Service.PDFGeneratorService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

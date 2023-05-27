@@ -1,8 +1,10 @@
 package com.example.licenta.Controller;
 
+
 import com.example.licenta.Service.PDFGeneratorService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,6 +22,7 @@ public class PDFExportController {
         this.pdfGeneratorService = pdfGeneratorService;
     }
 
+    @CrossOrigin
     @GetMapping("/pdf/generate")
     public void generatePDF(HttpServletResponse response, @RequestParam(name = "cifra") String cifra, @RequestParam(name = "figura") String figura, @RequestParam(name = "culoare") String culoare) throws IOException, URISyntaxException {
         response.setContentType("application/pdf");

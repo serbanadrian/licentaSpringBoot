@@ -14,6 +14,7 @@ public class PDFGeneratorService {
     private int nr;
     private String figura;
     private String culoare;
+    private String nume;
 
     public void setNr(int nr) {
         this.nr = nr;
@@ -26,6 +27,7 @@ public class PDFGeneratorService {
     public void setFigura(String figura) {
         this.figura = figura;
     }
+    public void setNume(String nume){this.nume = nume;}
 
     public void crearePDF(HttpServletResponse response) throws IOException {
         Document document = new Document(PageSize.A4);
@@ -34,6 +36,7 @@ public class PDFGeneratorService {
         Font titlu = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         titlu.setSize(23);
         Paragraph paragraph = new Paragraph("Invatarea " + this.corectie() + nr, titlu);
+        Paragraph name = new Paragraph("Nume: " +nume);
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
         Font font = FontFactory.getFont(FontFactory.HELVETICA);
         Paragraph paragraph1 = new Paragraph("Exersarea scrierii " + this.corectie() + nr + this.numar(), font);
@@ -54,6 +57,8 @@ public class PDFGeneratorService {
         groupExerciseImage.scaleAbsolute(450, 100);
 
         document.add(paragraph);
+        document.add(newline);
+        document.add(name);
         document.add(newline);
         document.add(paragraph1);
         document.add(newline);

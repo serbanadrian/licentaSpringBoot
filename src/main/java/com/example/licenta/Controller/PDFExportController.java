@@ -24,7 +24,7 @@ public class PDFExportController {
 
     @CrossOrigin
     @GetMapping("/pdf/generate")
-    public void generatePDF(HttpServletResponse response, @RequestParam(name = "cifra") String cifra, @RequestParam(name = "figura") String figura, @RequestParam(name = "culoare") String culoare) throws IOException, URISyntaxException {
+    public void generatePDF(HttpServletResponse response, @RequestParam(name = "cifra") String cifra, @RequestParam(name = "figura") String figura, @RequestParam(name = "culoare") String culoare,@RequestParam(name = "nume") String nume) throws IOException, URISyntaxException {
         response.setContentType("application/pdf");
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
         String currentDateTime = dateFormat.format(new Date());
@@ -34,6 +34,7 @@ public class PDFExportController {
         pdfGeneratorService.setNr(Integer.valueOf(cifra));
         pdfGeneratorService.setFigura(figura);
         pdfGeneratorService.setCuloare(culoare);
+        pdfGeneratorService.setNume(nume);
         this.pdfGeneratorService.crearePDF(response);
     }
 }
